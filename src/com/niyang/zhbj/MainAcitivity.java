@@ -2,8 +2,12 @@ package com.niyang.zhbj;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
+import com.niyang.zhbj.fragment.ContentFragment;
+import com.niyang.zhbj.fragment.LeftMenuFragment;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
 
 /**使用slidingmenu
@@ -16,6 +20,9 @@ import android.view.Window;
  *
  */
 public class MainAcitivity extends SlidingFragmentActivity {
+	private static final String TAG_LEFT_MENU="TAG_LEFT_MENU";
+	private static final String TAG_CONTENT="TAG_CONTENT";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,5 +42,18 @@ public class MainAcitivity extends SlidingFragmentActivity {
 
 		// 这只侧边栏高度
 		slidingMenu.setBehindOffset(200);
+		
+		initFragment();
+	}
+	
+	private void initFragment() {
+		FragmentManager fm = getSupportFragmentManager();
+		FragmentTransaction transaction = fm.beginTransaction();
+		transaction.replace(R.id.fl_left_menu, new LeftMenuFragment(),TAG_LEFT_MENU);
+		transaction.replace(R.id.fl_main, new ContentFragment(),TAG_CONTENT);
+		
+		transaction.commit();
+		
+		
 	}
 }
