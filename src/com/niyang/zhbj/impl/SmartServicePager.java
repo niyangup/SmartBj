@@ -5,6 +5,7 @@ import com.niyang.zhbj.base.BasePager;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 /**首页
@@ -28,6 +29,8 @@ public class SmartServicePager extends BasePager {
 		
 		mFlContent.addView(view);
 		mTvTitle.setText("生活");
+		
+		mBtnMenu.setVisibility(View.VISIBLE);
 	}
 
 }

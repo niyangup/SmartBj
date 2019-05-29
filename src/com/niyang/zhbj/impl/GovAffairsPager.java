@@ -5,6 +5,7 @@ import com.niyang.zhbj.base.BasePager;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 /**政务
@@ -28,6 +29,8 @@ public class GovAffairsPager extends BasePager {
 		
 		mFlContent.addView(view);
 		mTvTitle.setText("人口管理");
+		
+		mBtnMenu.setVisibility(View.VISIBLE);
 	}
 
 }
