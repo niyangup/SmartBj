@@ -1,14 +1,23 @@
 package com.niyang.zhbj.impl;
 
+import java.util.ArrayList;
+
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.niyang.zhbj.MainAcitivity;
+import com.niyang.zhbj.base.BaseMenuDetailPager;
 import com.niyang.zhbj.base.BasePager;
 import com.niyang.zhbj.domain.NewsMenu;
+import com.niyang.zhbj.fragment.LeftMenuFragment;
 import com.niyang.zhbj.global.GlobalConstants;
+import com.niyang.zhbj.menu.InteractMenuDetailPager;
+import com.niyang.zhbj.menu.NewsMenuDetailPager;
+import com.niyang.zhbj.menu.PhotoMenuDetailPager;
+import com.niyang.zhbj.menu.TopicMenuDetailPager;
 import com.niyang.zhbj.util.CacheUtil;
 
 import android.app.Activity;
@@ -26,22 +35,24 @@ import android.widget.Toast;
  * @author niyang
  *
  */
-public class NewsPager extends BasePager {
+public class NewsCenterPager extends BasePager {
+	private ArrayList<BaseMenuDetailPager> mMenuDetailPagers;
+	private NewsMenu mNewsData;//分类信息网络数据
 
-	public NewsPager(Activity activity) {
+	public NewsCenterPager(Activity activity) {
 		super(activity);
 	}
 
 	@Override
 	public void initData() {
 		// 给帧布局填充布局对象
-		TextView view = new TextView(mActivity);
-		view.setText("新闻中心");
-		view.setTextColor(Color.RED);
-		view.setTextSize(22);
-		view.setGravity(Gravity.CENTER);
-
-		mFlContent.addView(view);
+//		TextView view = new TextView(mActivity);
+//		view.setText("新闻中心");
+//		view.setTextColor(Color.RED);
+//		view.setTextSize(22);
+//		view.setGravity(Gravity.CENTER);
+//
+//		mFlContent.addView(view);
 		mTvTitle.setText("新闻");
 
 		mBtnMenu.setVisibility(View.VISIBLE);
@@ -86,8 +97,38 @@ public class NewsPager extends BasePager {
 	 */
 	protected void processData(String json) {
 		Gson gson = new Gson();
-		NewsMenu data = gson.fromJson(json, NewsMenu.class);
+		mNewsData = gson.fromJson(json, NewsMenu.class);
 
-		System.out.println("解析结果:" + data);
+		System.out.println("解析结果:" + mNewsData);
+		
+		MainAcitivity mainAcitivity=(MainAcitivity) mActivity;
+		
+		LeftMenuFragment fragment = mainAcitivity.getLeftMenuFragment();
+		//给侧边栏设置数据
+		fragment.setMenuData(mNewsData.data);
+		
+		//初始化四个菜单页面
+		mMenuDetailPagers=new ArrayList<BaseMenuDetailPager>();
+		mMenuDetailPagers.add(new NewsMenuDetailPager(mActivity));
+		mMenuDetailPagers.add(new TopicMenuDetailPager(mActivity));
+		mMenuDetailPagers.add(new PhotoMenuDetailPager(mActivity));
+		mMenuDetailPagers.add(new InteractMenuDetailPager(mActivity));
+		
+		//将新闻菜单详情页
+		setCurrentDetailPager(0);
+	}
+	
+	//获取当前
+	public void setCurrentDetailPager(int position) {
+		//重新给framelayout添加内容
+		BaseMenuDetailPager pager = mMenuDetailPagers.get(position);
+		View view = pager.mRootView;
+		
+		mFlContent.removeAllViews();
+		mFlContent.addView(view);
+		pager.initData();
+		
+		//更新标题
+		mTvTitle.setText(mNewsData.data.get(position).title);
 	}
 }

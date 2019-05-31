@@ -1,12 +1,16 @@
 package com.niyang.zhbj.base;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.niyang.zhbj.MainAcitivity;
 import com.niyang.zhbj.R;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class BasePager {
 
@@ -27,7 +31,23 @@ public class BasePager {
 		mBtnMenu = (ImageButton) view.findViewById(R.id.btn_menu);
 		mFlContent = (FrameLayout) view.findViewById(R.id.fl_content);
 
+		mBtnMenu.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				toggle();
+			}
+		});
+		
 		return view;
+	}
+
+	protected void toggle() {
+		//打开或者关闭侧边栏
+		MainAcitivity mainUI=(MainAcitivity) mActivity;
+		
+		SlidingMenu slidingMenu = mainUI.getSlidingMenu();
+		slidingMenu.toggle();//如果当前状态是开,调用后就关
 	}
 
 	public void initData() {

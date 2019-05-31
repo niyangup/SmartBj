@@ -8,7 +8,7 @@ import com.niyang.zhbj.R;
 import com.niyang.zhbj.base.BasePager;
 import com.niyang.zhbj.impl.GovAffairsPager;
 import com.niyang.zhbj.impl.HomePager;
-import com.niyang.zhbj.impl.NewsPager;
+import com.niyang.zhbj.impl.NewsCenterPager;
 import com.niyang.zhbj.impl.SettingPager;
 import com.niyang.zhbj.impl.SmartServicePager;
 import com.niyang.zhbj.view.NoScrollViewPager;
@@ -45,7 +45,7 @@ public class ContentFragment extends BaseFragment {
 	public void initData() {
 		mPagers = new ArrayList<BasePager>();
 		mPagers.add(new HomePager(mActivity));
-		mPagers.add(new NewsPager(mActivity));
+		mPagers.add(new NewsCenterPager(mActivity));
 		mPagers.add(new SmartServicePager(mActivity));
 		mPagers.add(new GovAffairsPager(mActivity));
 		mPagers.add(new SettingPager(mActivity));
@@ -160,5 +160,10 @@ public class ContentFragment extends BaseFragment {
 		public void destroyItem(ViewGroup container, int position, Object object) {
 			container.removeView((View) object);
 		}
+	}
+	
+	public NewsCenterPager getNewsCenterPager() {
+		NewsCenterPager pager = (NewsCenterPager) mPagers.get(1);
+		return pager;
 	}
 }
