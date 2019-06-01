@@ -28,14 +28,14 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  */
 public class ContentFragment extends BaseFragment {
 
-	private NoScrollViewPager mVpContnent;
+	private NoScrollViewPager mVpContent;
 	private ArrayList<BasePager> mPagers;// 5个标签页的集合
 	private RadioGroup mRgGroup;
 
 	@Override
 	public View initView() {
 		View view = View.inflate(mActivity, R.layout.fragment_content, null);
-		mVpContnent = (NoScrollViewPager) view.findViewById(R.id.vp_content);
+		mVpContent = (NoScrollViewPager) view.findViewById(R.id.vp_content);
 		mRgGroup = (RadioGroup) view.findViewById(R.id.rg_group);
 
 		return view;
@@ -50,7 +50,7 @@ public class ContentFragment extends BaseFragment {
 		mPagers.add(new GovAffairsPager(mActivity));
 		mPagers.add(new SettingPager(mActivity));
 
-		mVpContnent.setAdapter(new ContentAdapater());
+		mVpContent.setAdapter(new ContentAdapater());
 
 		// 为底栏标签切换监设置监听
 		mRgGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -59,27 +59,27 @@ public class ContentFragment extends BaseFragment {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.rb_home:
-					mVpContnent.setCurrentItem(0, false);
+					mVpContent.setCurrentItem(0, false);
 
 					break;
 
 				case R.id.rb_news:
-					mVpContnent.setCurrentItem(1, false);
+					mVpContent.setCurrentItem(1, false);
 
 					break;
 
 				case R.id.rb_smart:
-					mVpContnent.setCurrentItem(2, false);
+					mVpContent.setCurrentItem(2, false);
 
 					break;
 
 				case R.id.rb_gov:
-					mVpContnent.setCurrentItem(3, false);
+					mVpContent.setCurrentItem(3, false);
 
 					break;
 
 				case R.id.rb_setting:
-					mVpContnent.setCurrentItem(4, false);
+					mVpContent.setCurrentItem(4, false);
 
 					break;
 
@@ -90,7 +90,7 @@ public class ContentFragment extends BaseFragment {
 		mPagers.get(0).initData();
 		setSlidingMenuEnable(false);
 
-		mVpContnent.setOnPageChangeListener(new OnPageChangeListener() {
+		mVpContent.setOnPageChangeListener(new OnPageChangeListener() {
 
 			@Override
 			public void onPageSelected(int position) {
