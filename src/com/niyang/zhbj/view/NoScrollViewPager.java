@@ -19,6 +19,12 @@ public class NoScrollViewPager extends ViewPager {
 		super(context);
 	}
 	
+	//事件拦截
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent event) {
+		return false;//不拦截
+	}
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent arg0) {
 		//重写此方法,触摸时,什么都不做,从而试下对华东时间的禁用

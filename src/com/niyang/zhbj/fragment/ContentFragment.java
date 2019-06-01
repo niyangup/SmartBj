@@ -118,20 +118,21 @@ public class ContentFragment extends BaseFragment {
 		});
 	}
 
-	/**开启或禁用侧边栏
+	/**
+	 * 开启或禁用侧边栏
+	 * 
 	 * @param enable
 	 */
 	protected void setSlidingMenuEnable(boolean enable) {
-		//获取侧边栏对象
-		MainAcitivity mainUI=(MainAcitivity) mActivity;
+		// 获取侧边栏对象
+		MainAcitivity mainUI = (MainAcitivity) mActivity;
 		SlidingMenu slidingMenu = mainUI.getSlidingMenu();
 		if (enable) {
 			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		} else {
+			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 		}
-			else {
-				slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
-			}
-		}
+	}
 
 	class ContentAdapater extends PagerAdapter {
 
@@ -161,7 +162,7 @@ public class ContentFragment extends BaseFragment {
 			container.removeView((View) object);
 		}
 	}
-	
+
 	public NewsCenterPager getNewsCenterPager() {
 		NewsCenterPager pager = (NewsCenterPager) mPagers.get(1);
 		return pager;

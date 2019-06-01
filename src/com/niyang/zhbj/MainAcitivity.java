@@ -33,8 +33,8 @@ public class MainAcitivity extends SlidingFragmentActivity {
 		SlidingMenu slidingMenu = getSlidingMenu();
 
 		// 设置右边栏
-		slidingMenu.setSecondaryMenu(R.layout.sliding_right_menu);
-		slidingMenu.setMode(SlidingMenu.LEFT_RIGHT);// 设置模式,左右都有侧边栏
+//		slidingMenu.setSecondaryMenu(R.layout.sliding_right_menu);
+		slidingMenu.setMode(SlidingMenu.LEFT);// 设置模式,左右都有侧边栏
 
 		// 设置全屏触摸,默认划动边界
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
