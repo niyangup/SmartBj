@@ -532,22 +532,24 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int xsearch_msg_pull_arrow_down=0x7f020040;
     }
     public static final class id {
-        public static final int action_settings=0x7f090025;
+        public static final int action_settings=0x7f090028;
         public static final int bottom=0x7f090004;
-        public static final int btn_menu=0x7f090024;
+        public static final int btn_menu=0x7f090027;
         public static final int btn_start=0x7f09000b;
         public static final int fl_content=0x7f090010;
-        public static final int fl_left_menu=0x7f090022;
+        public static final int fl_left_menu=0x7f090025;
         public static final int fl_main=0x7f09000e;
         public static final int fullscreen=0x7f090008;
         public static final int ib_next=0x7f090020;
         public static final int indicator=0x7f09001c;
+        public static final int iv_arrow=0x7f090022;
         public static final int iv_icon=0x7f09001e;
         public static final int left=0x7f090006;
         public static final int ll_point=0x7f09000c;
         public static final int lv_list=0x7f090018;
         public static final int margin=0x7f090009;
         public static final int none=0x7f090001;
+        public static final int pb_loading=0x7f090023;
         public static final int rb_gov=0x7f090016;
         public static final int rb_home=0x7f090013;
         public static final int rb_news=0x7f090014;
@@ -557,12 +559,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int right=0x7f090007;
         public static final int rl_root=0x7f09000f;
         public static final int selected_view=0x7f090000;
-        public static final int slidingmenumain=0x7f090023;
+        public static final int slidingmenumain=0x7f090026;
         public static final int textView1=0x7f090019;
         public static final int top=0x7f090005;
         public static final int triangle=0x7f090002;
         public static final int tv_date=0x7f09001f;
         public static final int tv_menu=0x7f09001d;
+        public static final int tv_time=0x7f090024;
         public static final int tv_title=0x7f09001b;
         public static final int underline=0x7f090003;
         public static final int view_red_point=0x7f09000d;
@@ -591,10 +594,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int list_item_news=0x7f030009;
         public static final int pager_news_menu_detail=0x7f03000a;
         public static final int pager_tab_detail=0x7f03000b;
-        public static final int sliding_left_menu=0x7f03000c;
-        public static final int sliding_right_menu=0x7f03000d;
-        public static final int slidingmenumain=0x7f03000e;
-        public static final int title_bar=0x7f03000f;
+        public static final int pull_to_refresh=0x7f03000c;
+        public static final int sliding_left_menu=0x7f03000d;
+        public static final int sliding_right_menu=0x7f03000e;
+        public static final int slidingmenumain=0x7f03000f;
+        public static final int title_bar=0x7f030010;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;

@@ -5,6 +5,7 @@ import com.niyang.zhbj.util.SpUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -16,11 +17,13 @@ import android.widget.RelativeLayout;
 public class SplashActivity extends Activity {
 
 	private RelativeLayout mRlRoot;
-
+//	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
+		
+//		StrictMode.setThreadPolicy(policy);  
 		
 		mRlRoot = (RelativeLayout) findViewById(R.id.rl_root);
 		
