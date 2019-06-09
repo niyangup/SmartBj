@@ -60,5 +60,15 @@
             android:background="@null"
             android:src="@drawable/icon_share" />
     </LinearLayout>
+     <ImageButton
+            android:id="@+id/btn_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_pic_grid_type" />
 
 </RelativeLayout>

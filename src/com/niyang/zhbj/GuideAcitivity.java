@@ -3,6 +3,7 @@ package com.niyang.zhbj;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.niyang.zhbj.util.DensityUtils;
 import com.niyang.zhbj.util.SpUtil;
 
 import android.app.Activity;
@@ -11,14 +12,18 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 public class GuideAcitivity extends Activity {
 	private ViewPager mVp;
@@ -34,6 +39,7 @@ public class GuideAcitivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_guide);
 
+
 		mVp = (ViewPager) findViewById(R.id.vp_pager);
 		ivRedPoint = findViewById(R.id.view_red_point);
 		mLlPointer = (LinearLayout) findViewById(R.id.ll_point);
@@ -41,9 +47,9 @@ public class GuideAcitivity extends Activity {
 		initData();
 		initAdapter();
 		mVp.setAdapter(new MyAdapter());
-		
+
 		mBtnStart.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				SpUtil.putBoolean(getApplicationContext(), "ISFIRST", false);
@@ -59,9 +65,9 @@ public class GuideAcitivity extends Activity {
 			@Override
 			public void onPageSelected(int position) {
 				// 某个item被选中
-				if (position==imagelist.size()-1) {
+				if (position == imagelist.size() - 1) {
 					mBtnStart.setVisibility(View.VISIBLE);
-				}else {
+				} else {
 					mBtnStart.setVisibility(View.INVISIBLE);
 				}
 			}
@@ -69,11 +75,12 @@ public class GuideAcitivity extends Activity {
 			@Override
 			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 				// 当页面滑动过程中的回调
-//				int leftMargin = (int) (mPointDis * positionOffset) + position * mPointDis;
-//				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) ivRedPoint
-//						.getLayoutParams();
-//				layoutParams.leftMargin = 20;
-//				ivRedPoint.setLayoutParams(layoutParams);
+				// int leftMargin = (int) (mPointDis * positionOffset) + position * mPointDis;
+				// RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+				// ivRedPoint
+				// .getLayoutParams();
+				// layoutParams.leftMargin = 20;
+				// ivRedPoint.setLayoutParams(layoutParams);
 
 			}
 
@@ -114,7 +121,7 @@ public class GuideAcitivity extends Activity {
 					LinearLayout.LayoutParams.WRAP_CONTENT);
 			if (i > 0) {
 				// 从第二个点开始设置左边距
-				params.leftMargin = 10;
+				params.leftMargin = DensityUtils.dip2px(10, this);
 			}
 			// 将布局参数设置给小圆点
 			point.setLayoutParams(params);

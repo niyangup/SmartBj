@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
+import android.view.WindowManager;
 
 /**
  * 使用slidingmenu 1.引入slidingmenu库 2.继承SlidingFragmentActivity 3.onCreate改为public
@@ -22,6 +23,7 @@ public class MainAcitivity extends SlidingFragmentActivity {
 	private static final String TAG_LEFT_MENU = "TAG_LEFT_MENU";
 	private static final String TAG_CONTENT = "TAG_CONTENT";
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,8 +42,12 @@ public class MainAcitivity extends SlidingFragmentActivity {
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 
 		// 这只侧边栏高度
-		slidingMenu.setBehindOffset(300);
+//		slidingMenu,.setBehindOffset(200);
 
+		WindowManager wm = getWindowManager();
+		int width = wm.getDefaultDisplay().getWidth();
+		slidingMenu.setBehindOffset(width*200/320);
+		
 		initFragment();
 	}
 

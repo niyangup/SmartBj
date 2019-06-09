@@ -6,5 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/fl_main"
     tools:context="com.niyang.zhbj.MainAcitivity" >
+    
+    
 
 </FrameLayout>
